@@ -732,10 +732,10 @@ packages:
     dependency: transitive
     description:
       name: petitparser
-      sha256: cb3798bef7fc021ac45b308f4b51208a152792445cce0448c9a4ba5879dd8750
+      sha256: "91bd59303e9f769f108f8df05e371341b15d59e995e6806aefab827b58336675"
       url: "https://mirror-flutter.runflare.com"
     source: hosted
-    version: "5.4.0"
+    version: "7.0.2"
   photo_view:
     dependency: "direct main"
     description:
@@ -1145,10 +1145,10 @@ packages:
     dependency: "direct overridden"
     description:
       name: xml
-      sha256: "80d494c09849dc3f899d227a78c30c5b949b985ededf884cb3f3bcd39f4b447a"
+      sha256: "971043b3a0d3da28727e40ed3e0b5d18b742fa5a68665cca88e74b7876d5e025"
       url: "https://mirror-flutter.runflare.com"
     source: hosted
-    version: "5.4.1"
+    version: "6.6.1"
   yaml:
     dependency: transitive
     description:
