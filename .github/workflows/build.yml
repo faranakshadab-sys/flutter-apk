@@ -19,7 +19,7 @@ jobs:
       - name: Setup Flutter SDK
         uses: subosito/flutter-action@v2 # اکشن برای نصب Flutter SDK
         with:
-          flutter-version: '3.24.x' # نسخه Flutter مورد نظرتان را اینجا وارد کنید
+          flutter-version: '3.44.x' # نسخه Flutter مورد نظرتان را اینجا وارد کنید
           channel: 'stable'
           cache: true # این پارامتر به طور خودکار pub cache را کش می‌کند
 
