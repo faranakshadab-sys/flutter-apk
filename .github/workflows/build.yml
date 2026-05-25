@@ -2,9 +2,9 @@ name: Clean Flutter Build CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build_android:
@@ -17,7 +17,7 @@ jobs:
       - name: Setup Flutter SDK
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.x'
+          flutter-version: "3.44.x"
           channel: stable
           cache: true
 
