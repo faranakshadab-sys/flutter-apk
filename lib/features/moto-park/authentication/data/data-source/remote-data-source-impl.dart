@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' hide DioException;
 import 'package:get/get.dart';
 import 'package:parkingandroid/core/utilities/app-connectivity.dart';
 import 'package:parkingandroid/core/utilities/app-dio.dart';
