@@ -68,10 +68,7 @@ jobs:
   #     - name: Get Flutter packages
   #       run: flutter pub get
 
-  #     - name: Setup CocoaPods cache
-  #       uses: actions/cache@v3
-  #       id: cocoa-pods-cache
-  #       with:
+  #     - name: Setup CocoaPods cac
   #         path: '**/pods/                 ' # مسیر cache cocoa pods
   #         key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
   #         restore-keys: |
