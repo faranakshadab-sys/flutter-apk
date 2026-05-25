@@ -1,0 +1,2 @@
+-keep class com.pax.** { *; }
+-dontwarn com.pax.**

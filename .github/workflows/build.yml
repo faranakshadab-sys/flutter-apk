@@ -1,0 +1,89 @@
+name: Flutter Build CI
+
+on:
+  push:
+    branches:
+      - main # یا شاخه‌ای که می‌خواهید بیلد شود
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_android:
+    runs-on: ubuntu-latest # یا macOS-latest برای iOS
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4 # آخرین نسخه اکشن checkout
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2 # اکشن برای نصب Flutter SDK
+        with:
+          flutter-version: '3.22.x' # نسخه Flutter مورد نظرتان را اینجا وارد کنید
+          channel: 'stable'
+          cache: true # این پارامتر به طور خودکار pub cache را کش می‌کند
+
+      - name: Get Flutter packages
+        run: flutter pub get
+        # اگر pub cache به درستی کار نکند، این مرحله ممکن است کند باشد
+        # در صورت مشکل، می‌توانید از custom caching برای .pub-cache استفاده کنید
+
+      - name: Setup Gradle caching
+        uses: actions/cache@v3
+        id: gradle-cache # نام برای ارجاع در مراحل بعدی
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Build Android APK
+        run: flutter build apk --release
+        # اگر با نت داخلی مشکل داشتید، این دستور ممکن است کند باشد
+        # مطمئن شوید که Gradle wrapper به یک mirror داخلی اشاره کند، یا از cache استفاده کنید.
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-release-apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+  # --- بخش بیلد iOS (نیاز به macOS runner دارد) ---
+  # build_ios:
+  #   runs-on: macos-latest # نیاز به مک برای بیلد iOS
+
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+
+  #     - name: Setup Flutter SDK
+  #       uses: subosito/flutter-action@v2
+  #       with:
+  #         flutter-version: '3.22.x'
+  #         channel: 'stable'
+  #         cache: true
+
+  #     - name: Get Flutter packages
+  #       run: flutter pub get
+
+  #     - name: Setup CocoaPods cache
+  #       uses: actions/cache@v3
+  #       id: cocoa-pods-cache
+  #       with:
+  #         path: '**/pods/                 ' # مسیر cache cocoa pods
+  #         key: ${{ runner.os }}-cocoapods-${{ hashFiles('**/Podfile.lock') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-cocoapods-
+
+  #     - name: Build iOS IPA
+  #       run: flutter build ipa --release
+  #       # ممکن است نیاز به تنظیمات بیشتر برای signing باشد
+  #       # و دسترسی به اینترنت برای CocoaPods.
+
+  #     - name: Upload IPA artifact
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: app-release-ipa
+  #         path: build/ios/ipa # مسیر خروجی IPA ممکن است متفاوت باشد
