@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart' hide DioException;
 import 'package:get/get.dart';
 import 'package:parkingandroid/core/utilities/app-connectivity.dart';
 import 'package:parkingandroid/core/utilities/app-dio.dart';
@@ -50,7 +49,7 @@ class CommonRemoteDatasourceImpl extends CommonRemoteDatasource {
         return Left(
             DissconnectException(message: "dissconnect-error-message".tr));
       }
-    } on DioError catch (exception) {
+    } on DioException catch (exception) {
       return Left(DioException(message: exception.message ?? ""));
     } catch (exception) {
       return Left(ServerException(message: exception.toString()));
@@ -94,7 +93,7 @@ class CommonRemoteDatasourceImpl extends CommonRemoteDatasource {
         return Left(
             DissconnectException(message: "dissconnect-error-message".tr));
       }
-    } on DioError catch (exception) {
+    } on DioException catch (exception) {
       return Left(DioException(message: exception.message ?? ""));
     } catch (exception) {
       return Left(ServerException(message: exception.toString()));
@@ -142,7 +141,7 @@ class CommonRemoteDatasourceImpl extends CommonRemoteDatasource {
         return Left(
             DissconnectException(message: "dissconnect-error-message".tr));
       }
-    } on DioError catch (exception) {
+    } on DioException catch (exception) {
       return Left(DioException(message: exception.message ?? ""));
     } catch (exception) {
       return Left(ServerException(message: exception.toString()));
@@ -177,7 +176,7 @@ class CommonRemoteDatasourceImpl extends CommonRemoteDatasource {
         return Left(
             DissconnectException(message: "dissconnect-error-message".tr));
       }
-    } on DioError catch (exception) {
+    } on DioException catch (exception) {
       return Left(DioException(message: exception.message.toString()));
     } catch (exception) {
       return Left(ServerException(message: exception.toString()));
@@ -216,7 +215,7 @@ class CommonRemoteDatasourceImpl extends CommonRemoteDatasource {
       } else {
         return Left(ServerException(message: "dissconnect-error-message".tr));
       }
-    } on DioError catch (exception) {
+    } on DioException catch (exception) {
       return Left(DioException(message: exception.message ?? ""));
     } catch (exception) {
       return Left(ServerException(message: exception.toString()));
@@ -242,7 +241,7 @@ class CommonRemoteDatasourceImpl extends CommonRemoteDatasource {
       } else {
         return Left(ServerException(message: "dissconnect-error-message".tr));
       }
-    } on DioError catch (exception) {
+    } on DioException catch (exception) {
       return Left(DioException(message: exception.message ?? ""));
     } catch (exception) {
       return Left(ServerException(message: exception.toString()));

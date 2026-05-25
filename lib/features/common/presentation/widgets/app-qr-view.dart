@@ -1,6 +1,4 @@
-import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
@@ -48,18 +46,15 @@ class _AppQrCodeState extends State<AppQrCode> {
   }
 
   void getByteFromQr() async {
-    final qrImage = await QrPainter(
+    final byteData = await QrPainter(
       data: widget.reportId!,
       version: QrVersions.auto,
       gapless: false,
       color: Colors.black,
       emptyColor: Colors.white,
-    ).toImage(200, format: ImageByteFormat.rawRgba);
+    ).toImageData(200, format: ImageByteFormat.png);
 
-    final byteData = await qrImage.toByteData(format: ImageByteFormat.png);
-    final completer = Completer<Uint8List>();
-    completer.complete(byteData!.buffer.asUint8List());
-    final imageDataBytes = await completer.future;
+    final imageDataBytes = byteData!.buffer.asUint8List();
     final base64 = base64Encode(imageDataBytes);
     widget.onCreateQrCode(base64);
   }
@@ -82,7 +77,7 @@ class _AppQrCodeState extends State<AppQrCode> {
 
   Widget buildQrView() => widget.reportId == null
       ? Container()
-      : QrImage(
+      : QrImageView(
           data: widget.reportId.toString(),
           foregroundColor: Colors.black,
           backgroundColor: Colors.white,

@@ -162,7 +162,7 @@ class ReportBottomSheet extends GetWidget<MotoParkHomeController> {
                   borderRadius: BorderRadius.circular(8),
                   boxShadow: [
                     BoxShadow(
-                        color: Theme.of(context).colorScheme.background,
+                        color: Theme.of(context).colorScheme.surface,
                         blurRadius: 23,
                         spreadRadius: -5,
                         offset: Offset(0, 15))

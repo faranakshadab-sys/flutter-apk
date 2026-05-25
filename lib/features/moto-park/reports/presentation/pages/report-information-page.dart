@@ -137,7 +137,7 @@ class ReportInformationPage extends GetView<ReportInformationController> {
                             boxShadow: [
                               BoxShadow(
                                   color:
-                                      Theme.of(context).colorScheme.background,
+                                      Theme.of(context).colorScheme.surface,
                                   blurRadius: 23,
                                   spreadRadius: -5,
                                   offset: Offset(0, 15))

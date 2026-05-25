@@ -44,7 +44,7 @@ class HomeRemoteDatasourceImpl extends HomeRemoteDatasource {
         return Left(
             DissconnectException(message: "dissconnect-error-message".tr));
       }
-    } on Dio.DioError catch (exception) {
+    } on Dio.DioException catch (exception) {
       return Left(DioException(message: exception.message ?? ""));
     } catch (exception) {
       return Left(ServerException(message: exception.toString()));
@@ -82,7 +82,7 @@ class HomeRemoteDatasourceImpl extends HomeRemoteDatasource {
         return Left(
             DissconnectException(message: "dissconnect-error-message".tr));
       }
-    } on Dio.DioError catch (exception) {
+    } on Dio.DioException catch (exception) {
       return Left(DioException(message: exception.message.toString()));
     } catch (exception) {
       return Left(LocalException(message: exception.toString()));
@@ -110,7 +110,7 @@ class HomeRemoteDatasourceImpl extends HomeRemoteDatasource {
         return Left(
             DissconnectException(message: "dissconnect-error-message".tr));
       }
-    } on Dio.DioError catch (exception) {
+    } on Dio.DioException catch (exception) {
       return Left(DioException(message: exception.message.toString()));
     } catch (exception) {
       return Left(LocalException(message: exception.toString()));

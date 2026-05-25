@@ -29,7 +29,7 @@ class ReportRemoteDatasourceImpl extends ReportRemoteDatasource {
         return Left(
             DissconnectException(message: "dissconnect-error-message".tr));
       }
-    } on Dio.DioError catch (exception) {
+    } on Dio.DioException catch (exception) {
       return Left(DioException(message: exception.message ?? ""));
     } catch (exception) {
       return Left(ServerException(message: exception.toString()));

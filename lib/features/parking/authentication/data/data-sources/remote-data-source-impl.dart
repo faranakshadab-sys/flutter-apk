@@ -35,7 +35,7 @@ class AuthenticationRemoteDatasourceImpl
           message: "dissconnect-error-message".tr,
         ));
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return Left(DioException(message: e.message ?? ""));
     } catch (e) {
       return Left(ServerException(message: e.toString()));
