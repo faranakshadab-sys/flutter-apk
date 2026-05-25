@@ -17,7 +17,7 @@ dependencies:
   camera: ^0.10.4+1
   permission_handler: ^10.2.0
   cached_network_image: ^3.2.3
-  skeletons: ^0.0.6
+  skeletons: ^0.0.3
   carousel_slider: ^4.2.1
   pinch_zoom: ^1.0.0
   dio: ^5.0.1
@@ -35,7 +35,7 @@ dependencies:
 
 dependency_overrides:
   camera: ^0.10.4
-  xml: any
+  xml: ^7.0.1
   crypto: any
   analyzer: any
   archive: any
